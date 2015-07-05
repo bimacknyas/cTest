@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>country overlay</title>
+	<style>
+		ol, li{list-style:none;}
+	</style>
+</head>
+<body>
+	<div class="country" id="regionSort">		
+		<div id="regionContent">
+			<input type="checkbox" id="selectAll">All Countries
+			<ol></ol>
+		</div>
+	</div>
+		
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script src="jquery.js"></script>
+<script>
+	var json = [
+    {
+        "regionList": [
+            {
+                "regionCode": "#GR102# OR COUNTRY(Central Africa)",
+                "Countrylist": [
+                    {
+                        "countryName": "Angola",
+                        "state": [],
+                        "countryCode": "#GC500# OR COUNTRY(ANGOLA)"
+                    },
+                    {
+                        "countryName": "Cameroon",
+                        "state": [],
+                        "countryCode": "#GC386# OR COUNTRY(CAMEROON)"
+                    },
+                    {
+                        "countryName": "Central African Republic",
+                        "state": [],
+                        "countryCode": "#GC525# OR COUNTRY(CENTRAL AFRICA! REPUBLIC)"
+                    },
+                    {
+                        "countryName": "Chad",
+                        "state": [],
+                        "countryCode": "#GC526# OR COUNTRY(CHAD)"
+                    },
+                    {
+                        "countryName": "Congo",
+                        "state": [],
+                        "countryCode": "#GC528# OR COUNTRY(CONGO)"
+                    },
+                    {
+                        "countryName": "Congo, Democratic Republic",
+                        "state": [],
+                        "countryCode": "#GC394# OR COUNTRY(DEMOCRATIC REPUBLIC CONGO )"
+                    },
+                    {
+                        "countryName": "Equatorial Guinea",
+                        "state": [],
+                        "countryCode": "#GC531# OR COUNTRY(EQUATORIAL GUINEA)"
+                    },
+                    {
+                        "countryName": "Gabon",
+                        "state": [{
+                                "stateName": "Central China",
+                                "stateCode": "#GR201# OR COUNTRY(CENTRAL CHINA)"
+                            },
+                            {
+                                "stateName": "East China",
+                                "stateCode": "#GR202# OR COUNTRY(EAST CHINA)"
+                            },
+                            {
+                                "stateName": "Hong Kong",
+                                "stateCode": "#GC303# OR COUNTRY(HONG KONG)"
+                            },
+                            {
+                                "stateName": "Macao",
+                                "stateCode": "#GC591# OR COUNTRY(MACAO)"
+                            },
+                            {
+                                "stateName": "North Central China",
+                                "stateCode": "#GR203# OR COUNTRY(NORTH CENTRAL CHINA)"
+                            },
+                            {
+                                "stateName": "Northeast China",
+                                "stateCode": "#GR204# OR COUNTRY(NORTHEAST CHINA)"
+                            },
+                            {
+                                "stateName": "Northwest China",
+                                "stateCode": "#GR205# OR COUNTRY(NORTHWEST CHINA)"
+                            },
+                            {
+                                "stateName": "South China",
+                                "stateCode": "#GR206# OR COUNTRY(SOUTH CHINA)"
+                            }],
+                        "countryCode": "#GC390# OR COUNTRY(GABON)"
+                    },
+                    {
+                        "countryName": "Sao Tome  Principe", // Replace &
+                        "state": [],
+                        "countryCode": "#GC596# OR COUNTRY(SAO TOME & PRINCIPE)"
+                    }// Del
+                ],
+                "regionName": " "
+            },
+            {
+                "regionCode": "#GR104# OR COUNTRY(East! Africa)",
+                "Countrylist": [
+                    {
+                        "countryName": "Burundi",
+                        "state": [],
+                        "countryCode": "#GC523# OR COUNTRY(BURUNDI)"
+                    },
+                    {
+                        "countryName": "Comoros",
+                        "state": [],
+                        "countryCode": "#GC527# OR COUNTRY(COMOROS)"
+                    },
+                    {
+                        "countryName": "Djibouti",
+                        "state": [],
+                        "countryCode": "#GC530# OR COUNTRY(DJIBOUTI)"
+                    },
+                    {
+                        "countryName": "Eritrea",
+                        "state": [],
+                        "countryCode": "#GC700# OR COUNTRY(ERITREA)"
+                    },
+                    {
+                        "countryName": "Ethiopia",
+                        "state": [],
+                        "countryCode": "#GC505# OR COUNTRY(ETHIOPIA)"
+                    },
+                    {
+                        "countryName": "Kenya",
+                        "state": [],
+                        "countryCode": "#GC359# OR COUNTRY(KENYA)"
+                    },
+                    {
+                        "countryName": "Madagascar",
+                        "state": [],
+                        "countryCode": "#GC541# OR COUNTRY(MADAGASCAR)"
+                    },
+                    {
+                        "countryName": "Malawi",
+                        "state": [],
+                        "countryCode": "#GC542# OR COUNTRY(MALAWI)"
+                    },
+                    {
+                        "countryName": "Mauritius",
+                        "state": [],
+                        "countryCode": "#GC547# OR COUNTRY(MAURITIUS)"
+                    },
+                    {
+                        "countryName": "Mayotte",
+                        "state": [],
+                        "countryCode": "#GC654# OR COUNTRY(MAYOTTE)"
+                    },
+                    {
+                        "countryName": "Mozambique",
+                        "state": [],
+                        "countryCode": "#GC376# OR COUNTRY(MOZAMBIQUE)"
+                    },
+                    {
+                        "countryName": "Reunion",
+                        "state": [],
+                        "countryCode": "#GC553# OR COUNTRY(REUNION ISLAND)"
+                    },
+                    {
+                        "countryName": "Rwanda",
+                        "state": [],
+                        "countryCode": "#GC554# OR COUNTRY(RWANDA)"
+                    },
+                    {
+                        "countryName": "Seychelles",
+                        "state": [],
+                        "countryCode": "#GC556# OR COUNTRY(SEYCHELLES)"
+                    },
+                    {
+                        "countryName": "Somalia",
+                        "state": [],
+                        "countryCode": "#GC558# OR COUNTRY(SOMALIA)"
+                    },
+                    {
+                        "countryName": "Tanzania, United Republic Of",
+                        "state": [],
+                        "countryCode": "#GC383# OR COUNTRY(TANZANIA)"
+                    },
+                    {
+                        "countryName": "Uganda",
+                        "state": [],
+                        "countryCode": "#GC563# OR COUNTRY(UGANDA)"
+                    },
+                    {
+                        "countryName": "Zambia",
+                        "state": [],
+                        "countryCode": "#GC395# OR COUNTRY(ZAMBIA)"
+                    },
+                    {
+                        "countryName": "Zimbabwe",
+                        "state": [],
+                        "countryCode": "#GC396# OR COUNTRY(ZIMBABWE)"
+                    }
+                ],
+                "regionName": "Eastern Africa"
+            },
+            {
+                "regionCode": "#GR106# OR COUNTRY(North! Africa)",
+                "Countrylist": [
+                    {
+                        "countryName": "Algeria",
+                        "state": [],
+                        "countryCode": "#GC345# OR COUNTRY(ALGERIA)"
+                    },
+                    {
+                        "countryName": "Canary Islands",
+                        "state": [],
+                        "countryCode": "#GC623# OR COUNTRY(CANARY ISLANDS)"
+                    },
+                    {
+                        "countryName": "Egypt",
+                        "state": [],
+                        "countryCode": "#GC332# OR COUNTRY(EGYPT)"
+                    },
+                    {
+                        "countryName": "Libya",
+                        "state": [],
+                        "countryCode": "#GC350# OR COUNTRY(LIBYA)"
+                    },
+                    {
+                        "countryName": "Morocco",
+                        "state": [],
+                        "countryCode": "#GC360# OR COUNTRY(MOROCCO)"
+                    },
+                    {
+                        "countryName": "Sudan",
+                        "state": [],
+                        "countryCode": "#GC382# OR COUNTRY(SUDAN)"
+                    },
+                    {
+                        "countryName": "Tunisia",
+                        "state": [],
+                        "countryCode": "#GC384# OR COUNTRY(TUNISIA)"
+                    },
+                    {
+                        "countryName": "Western Sahara",
+                        "state": [],
+                        "countryCode": "#GC693# OR COUNTRY(WESTERN SAHARA)"
+                    }
+                ],
+                "regionName": "Northern Africa"
+            },
+            {
+                "regionCode": "#GR108# OR COUNTRY(South! Africa)",
+                "Countrylist": [
+                    {
+                        "countryName": "Botswana",
+                        "state": [],
+                        "countryCode": "#GC519# OR COUNTRY(BOTSWANA)"
+                    },
+                    {
+                        "countryName": "Lesotho",
+                        "state": [],
+                        "countryCode": "#GC539# OR COUNTRY(LESOTHO)"
+                    },
+                    {
+                        "countryName": "Namibia",
+                        "state": [],
+                        "countryCode": "#GC377# OR COUNTRY(NAMIBIA)"
+                    },
+                    {
+                        "countryName": "South Africa",
+                        "state": [],
+                        "countryCode": "#GC336# OR COUNTRY(SOUTH AFRICA)"
+                    },
+                    {
+                        "countryName": "Swaziland",
+                        "state": [],
+                        "countryCode": "#GC598# OR COUNTRY(SWAZILAND)"
+                    }
+                ],
+                "regionName": "Southern Africa"
+            },
+            {
+                "regionCode": "#GR112# OR COUNTRY(West! Africa)",
+                "Countrylist": [
+                    {
+                        "countryName": "Benin",
+                        "state": [],
+                        "countryCode": "#GC517# OR COUNTRY(BENIN)"
+                    },
+                    {
+                        "countryName": "Burkina Faso",
+                        "state": [],
+                        "countryCode": "#GC521# OR COUNTRY(BURKINA FASO)"
+                    },
+                    {
+                        "countryName": "Cape Verde",
+                        "state": [],
+                        "countryCode": "#GC524# OR COUNTRY(CAPE VERDE)"
+                    },
+                    {
+                        "countryName": "Gambia",
+                        "state": [],
+                        "countryCode": "#GC533# OR COUNTRY(GAMBIA)"
+                    },
+                    {
+                        "countryName": "Ghana",
+                        "state": [],
+                        "countryCode": "#GC506# OR COUNTRY(GHANA)"
+                    },
+                    {
+                        "countryName": "Guinea-Bissau",
+                        "state": [],
+                        "countryCode": "#GC537# OR COUNTRY(GUINEA-BISSAU)"
+                    },
+                    {
+                        "countryName": "Guinea",
+                        "state": [],
+                        "countryCode": "#GC391# OR COUNTRY(GUINEA and not papua or Equatorial or bissau)"
+                    },
+                    {
+                        "countryName": "Liberia",
+                        "state": [],
+                        "countryCode": "#GC374# OR COUNTRY(LIBERIA)"
+                    },
+                    {
+                        "countryName": "Mali",
+                        "state": [],
+                        "countryCode": "#GC543# OR COUNTRY(MALI)"
+                    },
+                    {
+                        "countryName": "Mauritania",
+                        "state": [],
+                        "countryCode": "#GC546# OR COUNTRY(MAURITANIA)"
+                    },
+                    {
+                        "countryName": "Niger",
+                        "state": [],
+                        "countryCode": "#GC551# OR COUNTRY(NIGER)"
+                    },
+                    {
+                        "countryName": "Nigeria",
+                        "state": [],
+                        "countryCode": "#GC334# OR COUNTRY(NIGERIA)"
+                    },
+                    {
+                        "countryName": "Saint Helena",
+                        "state": [],
+                        "countryCode": "#GC669# OR COUNTRY(SAINT HELENA)"
+                    },
+                    {
+                        "countryName": "Senegal",
+                        "state": [],
+                        "countryCode": "#GC555# OR COUNTRY(SENEGAL)"
+                    },
+                    {
+                        "countryName": "Sierra Leone",
+                        "state": [],
+                        "countryCode": "#GC557# OR COUNTRY(SIERRA LEONE)"
+                    },
+                    {
+                        "countryName": "Togo",
+                        "state": [],
+                        "countryCode": "#GC560# OR COUNTRY(TOGO)"
+                    }
+                ],
+                "regionName": "Western Africa"
+            }
+        ],
+        "continentName": "Africa",
+        "continentCode": "#GT111# OR COUNTRY(Africa)"
+    },
+    {
+        "regionList": [
+            {
+                "regionCode": "#GR126# OR COUNTRY(Central Asia)",
+                "Countrylist": [
+                    {
+                        "countryName": "Kazakhstan",
+                        "state": [],
+                        "countryCode": "#GC573# OR COUNTRY(KAZAKHSTAN)"
+                    },
+                    {
+                        "countryName": "Kyrgyzstan",
+                        "state": [],
+                        "countryCode": "#GC574# OR COUNTRY(KYRGYZSTAN)"
+                    },
+                    {
+                        "countryName": "Tajikistan",
+                        "state": [],
+                        "countryCode": "#GC579# OR COUNTRY(TAJIKISTAN)"
+                    },
+                    {
+                        "countryName": "Turkmenistan",
+                        "state": [],
+                        "countryCode": "#GC580# OR COUNTRY(TURKMENISTAN)"
+                    },
+                    {
+                        "countryName": "Uzbekistan",
+                        "state": [],
+                        "countryCode": "#GC582# OR COUNTRY(UZBEKISTAN)"
+                    }
+                ],
+                "regionName": "Central Asia"
+            },
+            {
+                "regionCode": "#GR128# OR COUNTRY(East! Asia)",
+                "Countrylist": [
+                    {
+                        "countryName": "China",
+                        "state": [
+                            {
+                                "stateName": "Central China",
+                                "stateCode": "#GR201# OR COUNTRY(CENTRAL CHINA)"
+                            },
+                            {
+                                "stateName": "East China",
+                                "stateCode": "#GR202# OR COUNTRY(EAST CHINA)"
+                            },
+                            {
+                                "stateName": "Hong Kong",
+                                "stateCode": "#GC303# OR COUNTRY(HONG KONG)"
+                            },
+                            {
+                                "stateName": "Macao",
+                                "stateCode": "#GC591# OR COUNTRY(MACAO)"
+                            },
+                            {
+                                "stateName": "North Central China",
+                                "stateCode": "#GR203# OR COUNTRY(NORTH CENTRAL CHINA)"
+                            },
+                            {
+                                "stateName": "Northeast China",
+                                "stateCode": "#GR204# OR COUNTRY(NORTHEAST CHINA)"
+                            },
+                            {
+                                "stateName": "Northwest China",
+                                "stateCode": "#GR205# OR COUNTRY(NORTHWEST CHINA)"
+                            },
+                            {
+                                "stateName": "South China",
+                                "stateCode": "#GR206# OR COUNTRY(SOUTH CHINA)"
+                            },
+                            {
+                                "stateName": "Southwest China",
+                                "stateCode": "#GR207# OR COUNTRY(SOUTHWEST CHINA)"
+                            }
+                        ],
+                        "countryCode": "#GC302# OR COUNTRY(CHINA)"
+                    },
+                    {
+                        "countryName": "Hong Kong",
+                        "state": [],
+                        "countryCode": "#GC303# OR COUNTRY(HONG KONG)"
+                    },
+                    {
+                        "countryName": "Japan",
+                        "state": [],
+                        "countryCode": "#GC306# OR COUNTRY(JAPAN)"
+                    },
+                    {
+                        "countryName": "Korea, North",
+                        "state": [],
+                        "countryCode": "#GC371# OR COUNTRY(KOREA, DEMOCRATIC PEOPLES REPUBLIC OF)"
+                    },
+                    {
+                        "countryName": "Korea, South",
+                        "state": [],
+                        "countryCode": "#GC307# OR COUNTRY(KOREA, REPUBLIC OF)"
+                    },
+                    {
+                        "countryName": "Macao",
+                        "state": [],
+                        "countryCode": "#GC591# OR COUNTRY(MACAO)"
+                    },
+                    {
+                        "countryName": "Mongolia",
+                        "state": [],
+                        "countryCode": "#GC549# OR COUNTRY(MONGOLIA)"
+                    },
+                    {
+                        "countryName": "Taiwan",
+                        "state": [],
+                        "countryCode": "#GC312# OR COUNTRY(TAIWAN)"
+                    },
+                    {
+                        "countryName": "Tibet",
+                        "state": [],
+                        "countryCode": "#ST000A25Z# OR COUNTRY(TIBET)"
+                    }
+                ],
+                "regionName": "Eastern Asia"
+            },
+            {
+                "regionCode": "#GR138# OR COUNTRY(South East! Asia)",
+                "Countrylist": [
+                    {
+                        "countryName": "Borneo",
+                        "state": [],
+                        "countryCode": "#ST0009WTY# OR COUNTRY(BORNEO)"
+                    },
+                    {
+                        "countryName": "Brunei Darussalam",
+                        "state": [],
+                        "countryCode": "#GC520# OR COUNTRY(BRUNEI DARUSSALAM)"
+                    },
+                    {
+                        "countryName": "Cambodia",
+                        "state": [],
+                        "countryCode": "#GC502# OR COUNTRY(CAMBODIA)"
+                    },
+                    {
+                        "countryName": "Indonesia",
+                        "state": [],
+                        "countryCode": "#GC305# OR COUNTRY(INDONESIA)"
+                    },
+                    {
+                        "countryName": "Lao Pdr",
+                        "state": [],
+                        "countryCode": "#GC372# OR COUNTRY(LAO PEOPLES DEMOCRATIC REPUBLIC)"
+                    },
+                    {
+                        "countryName": "Malaysia",
+                        "state": [],
+                        "countryCode": "#GC308# OR COUNTRY(MALAYSIA)"
+                    },
+                    {
+                        "countryName": "Myanmar",
+                        "state": [],
+                        "countryCode": "#GC522# OR COUNTRY(MYANMAR)"
+                    },
+                    {
+                        "countryName": "Philippines",
+                        "state": [],
+                        "countryCode": "#GC310# OR COUNTRY(PHILIPPINES)"
+                    },
+                    {
+                        "countryName": "Singapore",
+                        "state": [],
+                        "countryCode": "#GC311# OR COUNTRY(SINGAPORE)"
+                    },
+                    {
+                        "countryName": "Thailand",
+                        "state": [],
+                        "countryCode": "#GC313# OR COUNTRY(THAILAND)"
+                    },
+                    {
+                        "countryName": "Timor-Leste",
+                        "state": [],
+                        "countryCode": "#GC699# OR COUNTRY(TIMOR-LESTE)"
+                    },
+                    {
+                        "countryName": "Viet Nam",
+                        "state": [],
+                        "countryCode": "#GC385# OR COUNTRY(VIET NAM)"
+                    }
+                ],
+                "regionName": "South-Eastern Asia"
+            },
+            {
+                "regionCode": "#GR134# OR COUNTRY(South! Asia)",
+                "Countrylist": [
+                    {
+                        "countryName": "Afghanistan",
+                        "state": [],
+                        "countryCode": "#GC508# OR COUNTRY(AFGHANISTAN)"
+                    },
+                    {
+                        "countryName": "Bangladesh",
+                        "state": [],
+                        "countryCode": "#GC514# OR COUNTRY(BANGLADESH)"
+                    },
+                    {
+                        "countryName": "Bhutan",
+                        "state": [],
+                        "countryCode": "#GC608# OR COUNTRY(BHUTAN)"
+                    },
+                    {
+                        "countryName": "British Indian Ocean Territory",
+                        "state": [],
+                        "countryCode": "#GC611# OR COUNTRY(BRITISH INDIAN OCEAN TERRITORY)"
+                    },
+                    {
+                        "countryName": "India",
+                        "state": [],
+                        "countryCode": "#GC304# OR COUNTRY(INDIA)"
+                    },
+                    {
+                        "countryName": "Kashmir",
+                        "state": [],
+                        "countryCode": "#ST000A260# OR COUNTRY(KASHMIR)"
+                    },
+                    {
+                        "countryName": "Maldives",
+                        "state": [],
+                        "countryCode": "#GC698# OR COUNTRY(MALDIVES)"
+                    },
+                    {
+                        "countryName": "Nepal",
+                        "state": [],
+                        "countryCode": "#GC378# OR COUNTRY(NEPAL)"
+                    },
+                    {
+                        "countryName": "Pakistan",
+                        "state": [],
+                        "countryCode": "#GC309# OR COUNTRY(PAKISTAN)"
+                    },
+                    {
+                        "countryName": "Sri Lanka",
+                        "state": [],
+                        "countryCode": "#GC381# OR COUNTRY(SRI LANKA)"
+                    }
+                ],
+                "regionName": "Southern Asia"
+            },
+            {
+                "regionCode": "#GR140# OR COUNTRY(west! Asia)",
+                "Countrylist": [
+                    {
+                        "countryName": "Armenia",
+                        "state": [],
+                        "countryCode": "#GC568# OR COUNTRY(ARMENIA)"
+                    },
+                    {
+                        "countryName": "Azerbaijan",
+                        "state": [],
+                        "countryCode": "#GC569# OR COUNTRY(AZERBAIJAN)"
+                    },
+                    {
+                        "countryName": "Bahrain",
+                        "state": [],
+                        "countryCode": "#GC513# OR COUNTRY(BAHRAIN)"
+                    },
+                    {
+                        "countryName": "Cyprus",
+                        "state": [],
+                        "countryCode": "#GC529# OR COUNTRY(CYPRUS)"
+                    },
+                    {
+                        "countryName": "Georgia",
+                        "state": [],
+                        "countryCode": "#GC572# OR COUNTRY(GEORGIA)"
+                    },
+                    {
+                        "countryName": "Iran",
+                        "state": [],
+                        "countryCode": "#GC368# OR COUNTRY(IRAN)"
+                    },
+                    {
+                        "countryName": "Iraq",
+                        "state": [],
+                        "countryCode": "#GC358# OR COUNTRY(IRAQ)"
+                    },
+                    {
+                        "countryName": "Israel",
+                        "state": [],
+                        "countryCode": "#GC333# OR COUNTRY(ISRAEL)"
+                    },
+                    {
+                        "countryName": "Jordan",
+                        "state": [],
+                        "countryCode": "#GC370# OR COUNTRY(JORDAN)"
+                    },
+                    {
+                        "countryName": "Kuwait",
+                        "state": [],
+                        "countryCode": "#GC349# OR COUNTRY(KUWAIT)"
+                    },
+                    {
+                        "countryName": "Lebanon",
+                        "state": [],
+                        "countryCode": "#GC373# OR COUNTRY(LEBANON)"
+                    },
+                    {
+                        "countryName": "Oman",
+                        "state": [],
+                        "countryCode": "#GC392# OR COUNTRY(OMAN)"
+                    },
+                    {
+                        "countryName": "Palestinian Territory",
+                        "state": [],
+                        "countryCode": "#GC701# OR COUNTRY(PALESTINIAN TERRITORY)"
+                    },
+                    {
+                        "countryName": "Qatar",
+                        "state": [],
+                        "countryCode": "#GC552# OR COUNTRY(QATAR)"
+                    },
+                    {
+                        "countryName": "Saudi Arabia",
+                        "state": [],
+                        "countryCode": "#GC335# OR COUNTRY(SAUDI ARABIA)"
+                    },
+                    {
+                        "countryName": "Syria",
+                        "state": [],
+                        "countryCode": "#GC363# OR COUNTRY(SYRIA)"
+                    },
+                    {
+                        "countryName": "Turkey",
+                        "state": [],
+                        "countryCode": "#GC328# OR COUNTRY(TURKEY)"
+                    },
+                    {
+                        "countryName": "United Arab Emirates",
+                        "state": [],
+                        "countryCode": "#GC354# OR COUNTRY(UNITED ARAB EMIRATES)"
+                    },
+                    {
+                        "countryName": "Yemen",
+                        "state": [],
+                        "countryCode": "#GC566# OR COUNTRY(YEMEN)"
+                    }
+                ],
+                "regionName": "Western Asia"
+            }
+        ],
+        "continentName": "Asia",
+        "continentCode": "#GT113# OR COUNTRY(Asia)"
+    }
+];
+			var html = '';
+			var rgNum = 0;
+			$.each(json, function(i1, object) {
+			  html += '<li><input type="checkbox" class="lvl-1"/><b class=' + object.continentName + ' ><a name="continent_' + rgNum++ + '" ><label>' + object.continentName + '</label></a></b>';
+				html += '<ul>';
+				$.each(object.regionList, function(i3, region) {
+				  html += '<li class="region"><input type="checkbox" class="lvl-2"/><b>' + region.regionName + '</b>';
+				   $(".region input").click(function(){alert("empty");});
+				  $.each(region.Countrylist, function(i4, country) {
+					html += '<ul><li class=' + country.countryName.replace(/\s/g, "-") + '><input type="checkbox" class="lvl-3"/>' + country.countryName;					
+					if (country.hasOwnProperty("state") && country.state.length > 0) {
+					html += '<span class=' + country.countryName.replace(/\s/g, "-") + '>-</span>';
+					  };					  
+					$(document).on("click", "span." + country.countryName.replace(/\s/g, "-"), function(e) {
+					alert("span");
+						$(this).siblings("ul").is(":visible") ? $(this).siblings("ul").slideUp({
+						  start: function() {
+							e.target.textContent = "+"
+						  }
+						}) : $(this).siblings("ul").slideDown({
+						  start: function() {
+							e.target.textContent = "-"
+						  }
+						})
+					  });
+					if (country.state) {
+					  $.each(country.state, function(i5, subCountry) {
+						html += '<ul><li style="margin-left:-22px;"><input type="checkbox" class="lvl-4"/>' + subCountry.stateName + '</li></ul>';
+					  });
+					};					
+					html += '</li></ul>';
+				  });
+				  html += '</li>';
+				});
+				html += '</ul>';
+			  html += '</li>';
+			});
+
+			$(function() {
+			  $('#regionContent ol').html(html);
+			  $('#all').on('change', toggleAll);
+			  $('#regionContent ol').on('change', 'input.lvl-1', toggleTop);
+			  $('#regionContent ol').on('change', 'input.lvl-2', toggleLvl1);
+			  $('#regionContent ol').on('change', 'input.lvl-3', toggleLvl2);
+			  $('#regionContent ol').on('change', 'input.lvl-4', toggleLvl3);
+			});
+
+			var toggleAll = function(e) {
+			  $('#regionContent ol').find('input[class^=lvl-]').prop('checked', this.checked);
+			};
+
+			var toggleLvl = function(p, c) {
+			  var li = $(this).closest('ul').closest('li');
+			  li.children('input.lvl-' + p).prop('checked', 0 === li.find('input.lvl-' + c + ':not(:checked)').length);
+			};
+
+			var toggleLvl3 = function(e) {
+			  toggleLvl.bind(this)(3, 4);
+			};
+
+			var toggleLvl2 = function(e) {
+			  toggleLvl.bind(this)(2, 3);
+			  toggleChild.bind(this)();
+			};
+
+			var toggleLvl1 = function(e) {
+			  toggleLvl.bind(this)(1, 2);
+			  toggleChild.bind(this)();
+			};
+
+			var toggleTop = function(e) {
+			  $('#selectAll').prop('checked', 0 === $('#regionContent ol input.lvl-1:not(:checked)').length);
+			  toggleChild.bind(this)();
+			};
+
+			var toggleChild = function() {
+			  $(this).closest('li').find('input[class^=lvl-]').prop('checked', this.checked);
+			};
+
+</script>
+</body>
+</html>
